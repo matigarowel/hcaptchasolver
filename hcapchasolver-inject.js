@@ -116,7 +116,26 @@
     var USE_COLOUR_PATTERN = false;
 
 
+    loadScript("https://unpkg.com/jimp@0.5.2/browser/lib/jimp.min.js");
+	loadScript("https://cdnjs.cloudflare.com/ajax/libs/tesseract.js/2.0.0-alpha.2/tesseract.min.js");
+	loadScript("https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@3.13.0/dist/tf.min.js");
+	loadScript("https://cdn.jsdelivr.net/npm/@tensorflow-models/coco-ssd@2.2.2/dist/coco-ssd.min.js");
+	loadScript("https://cdn.jsdelivr.net/npm/@tensorflow-models/mobilenet@2.1.0/dist/mobilenet.min.js");
+
+
+	function loadScript(url)
+	{    
+    	var head = document.getElementsByTagName('head')[0];
+    	var script = document.createElement('script');
+    	script.type = 'text/javascript';
+    	script.src = url;
+    	head.appendChild(script);
+	}
+
+
     function hcaptcha() {
+    	
+        alert(window.location.href.includes("checkbox"))
         if (window.location.href.includes("checkbox")) {
             var checkboxInterval = setInterval(function() {
                 if (!qSelector(CHECK_BOX)) {
@@ -147,7 +166,7 @@
         }
     }
 
-    setInterval(() => { hcaptcha() }, 30000)
+    setInterval(() => { hcaptcha() }, 3000)
 
     //Probablility for objects
     var probabilityForObject = new Map();
